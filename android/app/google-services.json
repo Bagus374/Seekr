@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "411674426185",
+    "project_id": "seekr-58870",
+    "storage_bucket": "seekr-58870.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:411674426185:android:450fab89f7877809293898",
+        "android_client_info": {
+          "package_name": "com.example.seekr"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "411674426185-7nq8u10jnip3th21ffelga4t3oih6f2l.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBVHJuK7-iJZd8W6k72GTJPJ2nEJ9CNf24"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "411674426185-7nq8u10jnip3th21ffelga4t3oih6f2l.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
