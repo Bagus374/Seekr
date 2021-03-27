@@ -10,10 +10,17 @@ class Wrapper extends StatelessWidget {
         prevPageEvent = GoToSplashPage();
         context.bloc<PageBloc>().add(prevPageEvent);
       }
-    } else {
-      context.bloc<UserBloc>().add(LoadUser(firebaseUser.uid));
-
+    }
+    // if (!(prevPageEvent is GoToSplashPage || prevPageEvent2 is GoToOnboardPage)) {
+    //   prevPageEvent = GoToSplashPage();
+    //   prevPageEvent2 = GoToOnboardPage();
+    //   context.bloc<PageBloc>().add(prevPageEvent);
+    //   context.bloc<PageBloc>().add(prevPageEvent2);
+    // }
+    else {
       if (!(prevPageEvent is GoToMainPage)) {
+        context.bloc<UserBloc>().add(LoadUser(firebaseUser.uid));
+
         prevPageEvent = GoToMainPage();
         context.bloc<PageBloc>().add(prevPageEvent);
       }
@@ -24,7 +31,11 @@ class Wrapper extends StatelessWidget {
           ? SplashPage()
           : (pageState is OnLoginPage)
               ? SignInPage()
-              : MainPage(),
+              : (pageState is OnRegistrationPage)
+                  ? SignUpPage(pageState.registrationData)
+                  : (pageState is OnAccountConfirmationPage)
+                      ? AccountConfirmationPage(pageState.registrationData)
+                      : MainPage(),
     );
   }
 }

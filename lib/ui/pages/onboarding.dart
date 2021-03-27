@@ -6,11 +6,14 @@ class Onboarding extends StatefulWidget {
 }
 
 class _OnboardingState extends State<Onboarding> {
+  // final PageBloc _pageBloc = PageBloc();
   int currentIndex = 0;
   PageController _controller;
+  var result;
 
   @override
   void initState() {
+    // _pageBloc.add(GoToOnboardPage());
     _controller = PageController(initialPage: 0);
     super.initState();
   }
@@ -76,32 +79,33 @@ class _OnboardingState extends State<Onboarding> {
             ),
           ),
           Container(
-            height: 60,
-            // margin: EdgeInsets.all(40),
-            margin: EdgeInsets.all(20),
-            width: double.infinity,
-            child: FlatButton(
-              child: Text(
-                  currentIndex == contenst.length - 1 ? "Continue" : "Next"),
-              onPressed: () {
-                if (currentIndex == contenst.length - 1) {
-                  Navigator.pushReplacement(
-                      context,
-                      MaterialPageRoute(
-                        builder: (_) => SignInPage(),
-                      ));
-                }
-                _controller.nextPage(
-                    duration: Duration(milliseconds: 100),
-                    curve: Curves.bounceIn);
-              },
-              color: Theme.of(context).primaryColor,
-              textColor: Colors.white,
-              shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(20),
-              ),
-            ),
-          )
+              height: 60,
+              // margin: EdgeInsets.all(40),
+              margin: EdgeInsets.all(20),
+              width: double.infinity,
+              child: FlatButton(
+                child: Text(
+                    currentIndex == contenst.length - 1 ? "Continue" : "Next"),
+                onPressed: () {
+                  if (currentIndex == contenst.length - 1) {
+                    Navigator.pushReplacement(
+                        context,
+                        MaterialPageRoute(
+                          builder: (_) => SignInPage(),
+                        ));
+                    // MaterialPageRoute(
+                    //     builder: (BuildContext context) => SignInPage()));
+                  }
+                  _controller.nextPage(
+                      duration: Duration(milliseconds: 100),
+                      curve: Curves.bounceIn);
+                },
+                color: Theme.of(context).primaryColor,
+                textColor: Colors.white,
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(20),
+                ),
+              ))
         ],
       ),
     );
@@ -119,3 +123,55 @@ class _OnboardingState extends State<Onboarding> {
     );
   }
 }
+
+// class Onboarding extends StatefulWidget {
+//   @override
+//   _OnboardingState createState() => _OnboardingState();
+// }
+
+// class _OnboardingState extends State<Onboarding> {
+//   final PageBloc _pageBloc = PageBloc();
+
+//   @override
+//   void initState() {
+//     _pageBloc.add(GoToOnboardPage());
+//     super.initState();
+//   }
+
+//   @override
+//   Widget build(BuildContext context) {
+//     context
+//         .bloc<ThemeBloc>()
+//         .add(ChangeTheme(ThemeData().copyWith(primaryColor: accentColor2)));
+//     return Scaffold(
+//       body: Container(
+//         width: MediaQuery.of(context).size.width,
+//         height: MediaQuery.of(context).size.height,
+//         color: Colors.white,
+//         child: BlocProvider(
+//           create: (_) => _pageBloc,
+//           child: BlocListener<PageBloc, PageState>(
+//             listener: (context, state) {
+//               if (state is Loaded2) {
+//                 Navigator.pushReplacement(
+//                     context,
+//                     MaterialPageRoute(
+//                         builder: (BuildContext context) => SignInPage()));
+//               }
+//             },
+//             child: _buildSplashWidget(),
+//           ),
+//         ),
+//       ),
+//     );
+//   }
+
+//   Widget _buildSplashWidget() {
+//     return Center(
+//       child: Text(
+//         "SEEKR2",
+//         style: TextStyle(fontSize: 35, color: Colors.black),
+//       ),
+//     );
+//   }
+// }
